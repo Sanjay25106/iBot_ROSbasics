@@ -1,0 +1,25 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000  # High update rate; ensure your system can handle this
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - rev_1
+      - rev_2
+      - rev_3
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    interface_name: position
+    gains:  # Optional, only if supported by your hardware
+      rev_1: {p: 100.0, d: 0.0, i: 0.0}
+      rev_2: {p: 100.0, d: 0.0, i: 0.0}
+      rev_3: {p: 100.0, d: 0.0, i: 0.0}
+
